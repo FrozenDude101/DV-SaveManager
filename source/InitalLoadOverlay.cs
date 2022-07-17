@@ -130,6 +130,7 @@ namespace SaveManager
             GUILayout.EndHorizontal();
 
             if (GUILayout.Button("Load", GUILayout.ExpandWidth(true))) loadButtonClicked();
+            if (GUILayout.Button("Quit", GUILayout.ExpandWidth(true))) quitButtonClicked();
 
             GUILayout.Label(message, messageStyle, GUILayout.ExpandWidth(true));
         }
@@ -155,6 +156,10 @@ namespace SaveManager
             {
                 message = "That save does not exist.";
             }
+        }
+        private void quitButtonClicked()
+        {
+            Application.Quit();
         }
 
         [HarmonyPatch(typeof(WorldStreamingInit), "Validate")]
