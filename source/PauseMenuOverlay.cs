@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 using UnityEngine;
 
@@ -167,6 +168,13 @@ namespace SaveManager
         }
         private void saveButtonClicked()
         {
+            if (!(bool) typeof(SaveGameManager)
+                .GetMethod("SaveAllowed", BindingFlags.NonPublic | BindingFlags.Instance)
+                .Invoke(SingletonBehaviour<SaveGameManager>.Instance, null))
+            {
+                message = "Saving is not allowed during the tutorial.";
+                return;
+            }
             SaveManager.Instance.saveToFile(selection);
         }
         private void loadButtonClicked()

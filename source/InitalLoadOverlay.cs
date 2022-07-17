@@ -176,7 +176,7 @@ namespace SaveManager
         {
             public static bool Prefix(ref bool __result, WorldStreamingInit __instance)
             {
-                if (Instance.loadSelected || Instance.saves.Count == 0)
+                if (Instance.loadSelected)
                 {
                     Instance.disableOverlay();
                     return true;
