@@ -119,7 +119,7 @@ namespace SaveManager
 
             saveScrollPosition = GUILayout.BeginScrollView(saveScrollPosition, GUILayout.ExpandHeight(true));
             int clickedSaveIndex = GUILayout.SelectionGrid(selectedSaveIndex, saves.ToArray(), 1, gridStyle);
-            if (selectedSaveIndex != clickedSaveIndex) indexButtonClicked(clickedSaveIndex);
+            if (clickedSaveIndex != -1 && selectedSaveIndex != clickedSaveIndex) indexButtonClicked(clickedSaveIndex);
             selectedSaveIndex = clickedSaveIndex;
             GUILayout.EndScrollView();
 
@@ -152,6 +152,12 @@ namespace SaveManager
         }
         private void newButtonClicked()
         {
+            if (saves.Contains(selection))
+            {
+                message = "That save already exists.";
+                return;
+            }
+
             disableOverlay();
             loadSelected = true;
             SaveManager.Instance.loadFromFile(selection);
@@ -171,20 +177,32 @@ namespace SaveManager
         }
         private void copyButtonClicked()
         {
+            if (selectedSaveIndex == -1)
+            {
+                message = "You must select a save to copy.";
+                return;
+            }
+            if (saves.Contains(selection))
+            {
+                message = "That save already exists.";
+                return;
+            }
+
             SaveManager.Instance.copySaveFile(saves[selectedSaveIndex], selection);
             SaveManager.Instance.refreshSaveCache(showBackups);
+            message = "Copied!";
         }
         private void deleteButtonClicked()
         {
-            if (saves.Contains(selection))
-            {
-                SaveManager.Instance.deleteSaveFile(selection);
-                SaveManager.Instance.refreshSaveCache(showBackups);
-            }
-            else
+            if (!saves.Contains(selection))
             {
                 message = "That save does not exist.";
+                return;
             }
+
+            SaveManager.Instance.deleteSaveFile(selection);
+            SaveManager.Instance.refreshSaveCache(showBackups);
+            message = "Deleted!";
         }
         private void quitButtonClicked()
         {
