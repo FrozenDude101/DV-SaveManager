@@ -1,6 +1,6 @@
 {
   "Id": "SaveManager",
-  "Version": "0.1.4",
+  "Version": "0.2",
 
   "AssemblyName": "SaveManager.dll",
   "EntryMethod": "SaveManager.Main.Load",

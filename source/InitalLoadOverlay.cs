@@ -132,6 +132,7 @@ namespace SaveManager
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("New", GUILayout.ExpandWidth(true))) newButtonClicked();
             if (GUILayout.Button("Load", GUILayout.ExpandWidth(true))) loadButtonClicked();
+            if (GUILayout.Button("Delete", GUILayout.ExpandWidth(true))) deleteButtonClicked();
             if (GUILayout.Button("Quit", GUILayout.ExpandWidth(true))) quitButtonClicked();
             GUILayout.EndHorizontal();
 
@@ -160,6 +161,18 @@ namespace SaveManager
                 disableOverlay();
                 loadSelected = true;
                 SaveManager.Instance.loadFromFile(selection);
+            }
+            else
+            {
+                message = "That save does not exist.";
+            }
+        }
+        private void deleteButtonClicked()
+        {
+            if (saves.Contains(selection))
+            {
+                SaveManager.Instance.deleteSaveFile(selection);
+                SaveManager.Instance.refreshSaveCache(showBackups);
             }
             else
             {

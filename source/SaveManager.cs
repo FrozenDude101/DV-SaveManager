@@ -67,6 +67,10 @@ namespace SaveManager
             currentSaveName = name;
             SingletonBehaviour<SaveGameManager>.Instance.Save();
         }
+        public void deleteSaveFile(string name)
+        {
+            File.Delete(saveDirectoryPath + name);
+        }
 
         [HarmonyPatch(typeof(SaveGameManager), "GetSavePath")]
         public class SaveFilePathPatch

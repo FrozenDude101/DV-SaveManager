@@ -152,6 +152,7 @@ namespace SaveManager
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Save", GUILayout.ExpandWidth(true))) saveButtonClicked();
             if (GUILayout.Button("Load", GUILayout.ExpandWidth(true))) loadButtonClicked();
+            if (GUILayout.Button("Delete", GUILayout.ExpandWidth(true))) deleteButtonClicked();
             GUILayout.EndHorizontal();
 
             GUILayout.Label(message, messageStyle, GUILayout.ExpandWidth(true));
@@ -182,6 +183,18 @@ namespace SaveManager
             if (saves.Contains(selection))
             {
                 message = "Currently requires a restart.";
+            }
+            else
+            {
+                message = "That save does not exist.";
+            }
+        }
+        private void deleteButtonClicked()
+        {
+            if (saves.Contains(selection))
+            {
+                SaveManager.Instance.deleteSaveFile(selection);
+                SaveManager.Instance.refreshSaveCache(showBackups);
             }
             else
             {
