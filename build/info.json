@@ -1,12 +1,12 @@
 {
   "Id": "SaveManager",
-  "Version": "0.4",
+  "Version": "1.0.0",
 
   "AssemblyName": "SaveManager.dll",
   "EntryMethod": "SaveManager.Main.Load",
 
   "DisplayName": "Save Manager",
   "Author": "FrozenDude101",
-  "HomePage": "https://google.com",
+  "HomePage": "https://www.nexusmods.com/derailvalley/mods/474",
   "Repository": "https://github.com/FrozenDude101/DV-SaveManager"
 }
