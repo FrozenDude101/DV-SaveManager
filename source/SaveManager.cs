@@ -67,6 +67,11 @@ namespace SaveManager
             currentSaveName = name;
             SingletonBehaviour<SaveGameManager>.Instance.Save();
         }
+        
+        public void copySaveFile(string target, string name)
+        {
+            File.Copy(saveDirectoryPath + target, saveDirectoryPath + name);
+        }
         public void deleteSaveFile(string name)
         {
             File.Delete(saveDirectoryPath + name);

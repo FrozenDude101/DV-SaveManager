@@ -152,6 +152,7 @@ namespace SaveManager
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Save", GUILayout.ExpandWidth(true))) saveButtonClicked();
             if (GUILayout.Button("Load", GUILayout.ExpandWidth(true))) loadButtonClicked();
+            if (GUILayout.Button("Copy", GUILayout.ExpandWidth(true))) copyButtonClicked();
             if (GUILayout.Button("Delete", GUILayout.ExpandWidth(true))) deleteButtonClicked();
             GUILayout.EndHorizontal();
 
@@ -160,6 +161,7 @@ namespace SaveManager
 
         private void indexButtonClicked(int index)
         {
+            selectedSaveIndex = index;
             selection = saves[index];
         }
         private void showBackupsToggleClicked(bool show)
@@ -188,6 +190,11 @@ namespace SaveManager
             {
                 message = "That save does not exist.";
             }
+        }
+        private void copyButtonClicked()
+        {
+            SaveManager.Instance.copySaveFile(saves[selectedSaveIndex], selection);
+            SaveManager.Instance.refreshSaveCache(showBackups);
         }
         private void deleteButtonClicked()
         {
