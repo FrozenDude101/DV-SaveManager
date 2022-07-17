@@ -1,0 +1,12 @@
+{
+  "Id": "SaveManager",
+  "Version": "0.0.207",
+
+  "AssemblyName": "SaveManager.dll",
+  "EntryMethod": "SaveManager.Main.Load",
+
+  "DisplayName": "Save Manager",
+  "Author": "FrozenDude101",
+  "HomePage": "https://google.com",
+  "Repository": "https://google.com"
+}

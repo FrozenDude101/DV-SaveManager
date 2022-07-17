@@ -1,8 +1,12 @@
-bin/
-obj/
-Properties/
+*/
+!source/
+!build/
+!release/
 
-.editorconfig
+.*
+!.gitignore
 
-SaveManager.csproj
-SaveManager.sln
+*.csproj
+*.sln
+
+run.bat
