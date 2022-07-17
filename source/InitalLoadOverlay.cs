@@ -129,8 +129,11 @@ namespace SaveManager
             if (showBackups != tempShowBackups) showBackupsToggleClicked(tempShowBackups);
             GUILayout.EndHorizontal();
 
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("New", GUILayout.ExpandWidth(true))) newButtonClicked();
             if (GUILayout.Button("Load", GUILayout.ExpandWidth(true))) loadButtonClicked();
             if (GUILayout.Button("Quit", GUILayout.ExpandWidth(true))) quitButtonClicked();
+            GUILayout.EndHorizontal();
 
             GUILayout.Label(message, messageStyle, GUILayout.ExpandWidth(true));
         }
@@ -143,6 +146,12 @@ namespace SaveManager
         {
             showBackups = show;
             SaveManager.Instance.refreshSaveCache(showBackups);
+        }
+        private void newButtonClicked()
+        {
+            disableOverlay();
+            loadSelected = true;
+            SaveManager.Instance.loadFromFile(selection);
         }
         private void loadButtonClicked()
         {
