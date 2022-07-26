@@ -6,4 +6,7 @@
 .*
 !.gitignore
 
-run.bat
+*.csproj
+*.sln
+
+*.bat
