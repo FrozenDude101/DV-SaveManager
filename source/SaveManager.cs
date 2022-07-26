@@ -53,7 +53,7 @@ namespace SaveManager
             return filteredFiles;
         }
 
-        public void loadFromFile(string name)
+        public void initialLoadFromFile(string name)
         {
             currentSaveName = name;
             StartCoroutine(
@@ -61,6 +61,11 @@ namespace SaveManager
                     .GetMethod("LoadingRoutine", BindingFlags.NonPublic | BindingFlags.Instance)
                     .Invoke(SingletonBehaviour<WorldStreamingInit>.Instance, null)
             );
+        }
+        public void dynamicLoadFromFile(string name)
+        {
+            currentSaveName = name;
+            DynamicLoader.Instance.Load();
         }
         public void saveToFile(string name)
         {

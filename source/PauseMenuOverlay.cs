@@ -28,7 +28,7 @@ namespace SaveManager
         private int selectedSaveIndex = -1;
         public bool showBackups { get; private set; } = false;
         private string selection = "";
-        private string message = "";
+        public string message = "";
 
         private bool stylesCreated = false;
 
@@ -160,6 +160,8 @@ namespace SaveManager
             GUILayout.EndHorizontal();
 
             GUILayout.Label(message, messageStyle, GUILayout.ExpandWidth(true));
+
+            GUI.DragWindow();
         }
 
         private void indexButtonClicked(int index)
@@ -195,7 +197,7 @@ namespace SaveManager
         {
             if (saves.Contains(selection))
             {
-                message = "Currently requires a game restart.";
+                SaveManager.Instance.dynamicLoadFromFile(selection);
             }
             else
             {

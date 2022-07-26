@@ -138,6 +138,8 @@ namespace SaveManager
             GUILayout.EndHorizontal();
 
             GUILayout.Label(message, messageStyle, GUILayout.ExpandWidth(true));
+
+            GUI.DragWindow();
         }
 
         private void indexButtonClicked(int index)
@@ -160,7 +162,7 @@ namespace SaveManager
 
             disableOverlay();
             loadSelected = true;
-            SaveManager.Instance.loadFromFile(selection);
+            SaveManager.Instance.initialLoadFromFile(selection);
         }
         private void loadButtonClicked()
         {
@@ -168,7 +170,7 @@ namespace SaveManager
             {
                 disableOverlay();
                 loadSelected = true;
-                SaveManager.Instance.loadFromFile(selection);
+                SaveManager.Instance.initialLoadFromFile(selection);
             }
             else
             {
